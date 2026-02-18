@@ -6,6 +6,7 @@ import java.util.Scanner;
  * - citire valori de la consolă / redirectare flux standard
  * - lucrul cu masive bidimensionale
  */
+
 public class ProgramMatrice {
 
     public static double[][] citire() {
