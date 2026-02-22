@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Curs1/Curs1.iml" filepath="$PROJECT_DIR$/Curs1/Curs1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Curs2/Curs2.iml" filepath="$PROJECT_DIR$/Curs2/Curs2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Curs3/Curs3.iml" filepath="$PROJECT_DIR$/Curs3/Curs3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java.iml" filepath="$PROJECT_DIR$/Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar01-REDO/Seminar01-REDO.iml" filepath="$PROJECT_DIR$/Seminar01-REDO/Seminar01-REDO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Seminar2-REDO/Seminar2-REDO.iml" filepath="$PROJECT_DIR$/Seminar2-REDO/Seminar2-REDO.iml" />
     </modules>
   </component>
 </project>
