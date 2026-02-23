@@ -128,8 +128,4 @@ public class Program03_Streams {
                 .getMedie();
         System.out.printf("Varsta medie este %.2f ani.%n", medie);
     }
-
-
-
-
 }
