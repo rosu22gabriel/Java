@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Curs1/Curs1.iml" filepath="$PROJECT_DIR$/Curs1/Curs1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Curs2/Curs2.iml" filepath="$PROJECT_DIR$/Curs2/Curs2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Curs3/Curs3.iml" filepath="$PROJECT_DIR$/Curs3/Curs3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Curs4/Curs4.iml" filepath="$PROJECT_DIR$/Curs4/Curs4.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Curs5/Curs5.iml" filepath="$PROJECT_DIR$/Curs5/Curs5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Curs1-Introduction/Curs1.iml" filepath="$PROJECT_DIR$/Curs1-Introduction/Curs1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Curs2-OOP/Curs2.iml" filepath="$PROJECT_DIR$/Curs2-OOP/Curs2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Curs3-Generics&amp;JavaCollectionFramework/Curs3.iml" filepath="$PROJECT_DIR$/Curs3-Generics&amp;JavaCollectionFramework/Curs3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Curs4-IO/Curs4.iml" filepath="$PROJECT_DIR$/Curs4-IO/Curs4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Curs5-FuncInterfaces&amp;Lambda&amp;Streams/Curs5.iml" filepath="$PROJECT_DIR$/Curs5-FuncInterfaces&amp;Lambda&amp;Streams/Curs5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Curs6-Threads/Curs6.iml" filepath="$PROJECT_DIR$/Curs6-Threads/Curs6.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java.iml" filepath="$PROJECT_DIR$/Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar01-REDO/Seminar01-REDO.iml" filepath="$PROJECT_DIR$/Seminar01-REDO/Seminar01-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar03-REDO/Seminar03-REDO.iml" filepath="$PROJECT_DIR$/Seminar03-REDO/Seminar03-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar04-REDO/Seminar04-REDO.iml" filepath="$PROJECT_DIR$/Seminar04-REDO/Seminar04-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar05-REDO/Seminar05-REDO.iml" filepath="$PROJECT_DIR$/Seminar05-REDO/Seminar05-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar2-REDO/Seminar2-REDO.iml" filepath="$PROJECT_DIR$/Seminar2-REDO/Seminar2-REDO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Seminar06-REDO/Seminar6-REDO.iml" filepath="$PROJECT_DIR$/Seminar06-REDO/Seminar6-REDO.iml" />
     </modules>
   </component>
 </project>
