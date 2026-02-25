@@ -49,6 +49,58 @@ public class Seminar04_InmultireMatrice {
                 matY[i][j] = Math.random() * 10 - 5;
             }
         }
+
+        long start = System.nanoTime();
+        FirInmultire fir = new FirInmultire(matX, matY, matRez, 0, 0, n - 1, n - 1);
+        System.out.println("Start inmultire matrice pe un singur fir");
+        fir.start();
+        fir.join();
+        System.out.printf("Executie in %d milisecunde.%n", (System.nanoTime() - start) / 1000000);
+
+        start = System.nanoTime();
+
+        // Calcul numar linii pe un bloc in matricea matX
+        // si numar coloane pe un bloc in matricea matY
+        int numarLiniiPerBloc = n / numarBlocuri, numarColoanePerBloc = n / numarBlocuri;
+
+
+        // Alocare masiv fire
+        FirInmultire[][] fire = new FirInmultire[numarBlocuri][numarBlocuri];
+        System.out.printf("%nStart inmultire matrice pe %d fire.%n", numarBlocuri * numarBlocuri);
+        for (int i = 0; i < numarBlocuri; i++) {
+            int indexLinieStart = i * numarLiniiPerBloc;
+            int indexLinieEnd = (i + 1) * numarLiniiPerBloc - 1;
+
+            // Ultimul bloc preia si liniile rest
+            // Exemplu: n = 37, numar blocuri = 3
+            // - avem numarLiniiPerBloc = 37 / 3 = 10 si i cu valorile 0, 1, 2
+            // - trebuie sa obtinem trei blocuri pe dimensiuni: 10, 10, 17
+            if (i == numarBlocuri - 1) {
+                indexLinieEnd = n - 1;
+            }
+            for (int j = 0; j < numarBlocuri; j++) {
+                int indexColoanaStart = j * numarColoanePerBloc;
+                int indexColoanaEnd =  (j + 1) * numarColoanePerBloc - 1;
+
+                // Ultimul bloc preia si coloanele rest
+                if (j == n - 1) {
+                    indexColoanaEnd = n - 1;
+                }
+
+                // Alocare si pornire executie fir
+                fire[i][j] = new FirInmultire(matX, matY, matRez,
+                        indexLinieStart, indexColoanaStart,
+                        indexLinieEnd, indexColoanaEnd);
+                fire[i][j].start();
+            }
+        }
+        for (int i = 0; i < numarBlocuri; i++) {
+            for (int j = 0; j < numarBlocuri; j++) {
+                fire[i][j].join();
+            }
+        }
+
+        System.out.printf("Executie in %d milisecunde.%n", (System.nanoTime() - start) / 1000000);
     }
 
 
