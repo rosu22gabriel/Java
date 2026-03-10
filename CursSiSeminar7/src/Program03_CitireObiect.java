@@ -17,7 +17,7 @@ import java.lang.annotation.*;
 import java.lang.reflect.*;
 import java.util.Scanner;
 
-@Retention(RetentionPolicy.RUNTIME);
+@Retention(RetentionPolicy.RUNTIME)
 @interface IgnoraCamp {
 }
 
@@ -27,36 +27,40 @@ import java.util.Scanner;
 }
 
 @Retention(RetentionPolicy.RUNTIME)
-@interface Dimensiune{
+@interface Dimensiune {
     int minim();
+
     int maxim();
 }
 
+
 public class Program03_CitireObiect {
+
     public static Object CitireObiect(Class<?> clasa)
             throws NoSuchMethodException,
             IllegalAccessException,
-            InstantiationError,
-            InvocationTargetException, InstantiationException {
+            InstantiationException,
+            InvocationTargetException {
+
         var scanner = new Scanner(System.in);
 
-        // 1. Construim o instanta din obiectul solicitat
+        // 1. Construim o instanță din obiectul solicitat
         // folosind constructorul implicit
         var rezultat = clasa.getConstructor().newInstance();
 
-        // 2. Pentru fiecare camp declarat in clasa
+        // 2. Pentru fiecare câmp declarat în clasă
         for (var camp : clasa.getDeclaredFields()) {
             if (Modifier.isStatic(camp.getModifiers())) {
-                continue; // ignoram campurile statice
+                continue;   // ignorăm câmpurile statice
             }
 
             if (camp.isAnnotationPresent(IgnoraCamp.class)) {
-                continue; // ignoram campurile marcate cu @IgnoraCamp
+                continue;   // ignorăm câmpurile marcate cu @IgnoraCamp
             }
 
-            // Afisam mesajul specificat sau un mesaj implicit daca nu exista
+            // Afișăm mesajul specificat sau un mesaj implicit dacă nu există
             String mesaj = String.format(
-                    "Introduceti valoarea pentru campul '%s': ",
+                    "Introduceți valoarea pentru câmpul '%s': ",
                     camp.getName());
             if (camp.isAnnotationPresent(Mesaj.class)) {
                 mesaj = camp.getAnnotationsByType(Mesaj.class)[0].value();
@@ -64,20 +68,114 @@ public class Program03_CitireObiect {
 
             System.out.print(mesaj);
 
-            // Citim valoarea introdusa de utilizator ca string
+            // Citim valoarea introdusă de utilizator ca string
             var linie = scanner.nextLine();
 
-            // O convertim la tipul campului
+            // O convertim la tipul câmpului
             Object valoare = null;
             if (camp.getType() == String.class) {
                 valoare = linie;
 
+                // pentru câmpuri de tip string validăm și dimensiunea
+                // (dacă este specificată)
+                if (camp.isAnnotationPresent(Dimensiune.class)) {
+                    var dimensiune = camp.getAnnotationsByType(Dimensiune.class)[0];
+                    if (linie.length() < dimensiune.minim()
+                            || linie.length() > dimensiune.maxim()) {
+                        throw new AssertionError(
+                                "Dimensiune invalidă pentru câmpul " + camp.getName());
+                    }
+                }
+
+            } else if (camp.getType() == int.class) {
+                valoare = Integer.parseInt(linie);
+            } else {
+                throw new UnsupportedOperationException(
+                        "Tipul " + camp.getType().getName() + " nu este suportat momentan.");
             }
 
+            // Obținem metoda de set corespunzătoare și o apelăm
+            // Pentru un camp 'pret' -> căutăm metoda 'setPret'
+            // care are un singur parametru de tipul campului.
+            var denumire = "set"
+                    + camp.getName().substring(0, 1).toUpperCase()
+                    + camp.getName().substring(1);
+
+            var metodaSet = clasa.getMethod(denumire, camp.getType());
+            metodaSet.invoke(rezultat, valoare);
         }
+
         return rezultat;
     }
 
 
+    static void afisareObiect(Object obiect) throws Exception {
+        Class classInfo = obiect.getClass();
+        System.out.print(classInfo.getName() + ": ");
+
+        while(classInfo != Object.class) {
+            for (Field camp : classInfo.getDeclaredFields()) {
+                if (Modifier.isStatic(camp.getModifiers())){
+                    continue;
+                }
+                camp.setAccessible(true);
+                System.out.printf("%s (%s)='%s' ",
+                        camp.getName(),
+                        camp.getType().getName(),
+                        camp.get(obiect));
+            }
+            classInfo = classInfo.getSuperclass();
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) throws Exception {
+        Produs produs = (Produs) CitireObiect(Produs.class);
+        afisareObiect(produs);
+    }
+}
+
+class Produs {
+    @Mesaj("Introduceti denumirea produsului: ")
+    @Dimensiune(minim = 3, maxim = 10)
+    String denumire;
+
+    @IgnoraCamp
+    int cantitate;
+
+    int pret;
+
+    public Produs() {
+    }
+
+    public String getDenumire() {
+        return denumire;
+    }
+
+    public void setDenumire(String denumire) {
+        this.denumire = denumire;
+    }
+
+    public int getCantitate() {
+        return cantitate;
+    }
+
+    public int getPret() {
+        return pret;
+    }
+
+    public void setPret(int pret) {
+        this.pret = pret;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Produs{");
+        sb.append("denumire='").append(denumire).append('\'');
+        sb.append(", cantitate=").append(cantitate);
+        sb.append(", pret=").append(pret);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
