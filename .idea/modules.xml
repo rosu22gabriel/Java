@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/Curs5-FuncInterfaces&amp;Lambda&amp;Streams/Curs5.iml" filepath="$PROJECT_DIR$/Curs5-FuncInterfaces&amp;Lambda&amp;Streams/Curs5.iml" />
       <module fileurl="file://$PROJECT_DIR$/Curs6-Threads/Curs6.iml" filepath="$PROJECT_DIR$/Curs6-Threads/Curs6.iml" />
       <module fileurl="file://$PROJECT_DIR$/Curs9-Network/Curs9-Network.iml" filepath="$PROJECT_DIR$/Curs9-Network/Curs9-Network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CursSiSeminar10-XML-JSON/CursSiSeminar10-XML-JSON.iml" filepath="$PROJECT_DIR$/CursSiSeminar10-XML-JSON/CursSiSeminar10-XML-JSON.iml" />
       <module fileurl="file://$PROJECT_DIR$/CursSiSeminar7/CursSiSeminar7-Reflection&amp;Adnotations.iml" filepath="$PROJECT_DIR$/CursSiSeminar7/CursSiSeminar7-Reflection&amp;Adnotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/CursSiSeminar8-JDBC/CursSiSeminar8-JDBC.iml" filepath="$PROJECT_DIR$/CursSiSeminar8-JDBC/CursSiSeminar8-JDBC.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java.iml" filepath="$PROJECT_DIR$/Java.iml" />
@@ -17,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/Seminar03-REDO/Seminar03-REDO.iml" filepath="$PROJECT_DIR$/Seminar03-REDO/Seminar03-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar04-REDO/Seminar04-REDO.iml" filepath="$PROJECT_DIR$/Seminar04-REDO/Seminar04-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar05-REDO/Seminar05-REDO.iml" filepath="$PROJECT_DIR$/Seminar05-REDO/Seminar05-REDO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Seminar09-REDO/Seminar09-REDO.iml" filepath="$PROJECT_DIR$/Seminar09-REDO/Seminar09-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar2-REDO/Seminar2-REDO.iml" filepath="$PROJECT_DIR$/Seminar2-REDO/Seminar2-REDO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Seminar06-REDO/Seminar6-REDO.iml" filepath="$PROJECT_DIR$/Seminar06-REDO/Seminar6-REDO.iml" />
     </modules>

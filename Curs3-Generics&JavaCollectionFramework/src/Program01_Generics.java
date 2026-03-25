@@ -2,27 +2,30 @@ import java.util.Arrays;
 
 class Colectie <T> {
     private Object[] elemente = new Object[0];
+
     public void addElement(T element) {
         elemente = Arrays.copyOf(elemente, elemente.length + 1);
         elemente[elemente.length - 1] = element;
     }
 
     public T getElement(int index) {
-        return (T)elemente[index];
+        return (T) elemente[index];
     }
 
     public int getNumarElemente() {
         return elemente.length;
     }
 }
-public class Program01_Generics {
+
+public class Program01_Generics
+{
     public static <T> void afisareColectie(Colectie<T> colectie) {
         for (int index = 0; index < colectie.getNumarElemente(); index++) {
             System.out.println(colectie.getElement(index));
         }
     }
 
-    public static <T> boolean existaElement(Colectie<T> colectie, T element) {
+    public static <T> boolean existaElement (Colectie<T> colectie, T element) {
         for (int index = 0; index < colectie.getNumarElemente(); index++) {
             if (colectie.getElement(index).equals(element)) {
                 return true;
@@ -39,11 +42,11 @@ public class Program01_Generics {
         afisareColectie(v1);
 
         if (existaElement(v1, "mere")) {
-            System.out.println("Are mere.");
+            System.out.println("Are mere");
         }
 
         if (!existaElement(v1, "pere")) {
-            System.out.println("Nu are pere.");
+            System.out.println("Nu are pere");
         }
 
         Colectie<Integer> v2 = new Colectie<>();
@@ -57,4 +60,3 @@ public class Program01_Generics {
         afisareColectie(v3);
     }
 }
-

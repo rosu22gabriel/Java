@@ -1,10 +1,11 @@
+import java.sql.Array;
 import java.util.*;
 
 class Student implements Comparable, Cloneable {
     private Map<String, Integer> note;
     private final String nume;
 
-    public Student(String nume) {
+    Student(String nume) {
         this.nume = nume;
         this.note = new HashMap<>();
     }
@@ -17,12 +18,12 @@ class Student implements Comparable, Cloneable {
         return note.containsKey(disciplina);
     }
 
-    public int getNota(String disciplina) {
+    public int getNota(String disciplina){
         if (areNota(disciplina)) {
             return note.get(disciplina);
         } else {
             throw new NoSuchElementException(String.format(
-                    "Studentul '%s' nu are nota la disciplina '%s'.", nume, disciplina
+               "Studentul '%s' nu are nota la disciplina '%s' .", nume, disciplina
             ));
         }
     }
@@ -31,15 +32,27 @@ class Student implements Comparable, Cloneable {
         return note.keySet();
     }
 
-    public void adaugaNote(String disciplina, int nota) {
+    public void adaugaNota(String disciplina, int nota) {
         if (nota < 1 || nota > 10) {
-            throw new IllegalArgumentException("Nota invalida");
+            throw new IllegalArgumentException("Nota invalida.");
         }
         note.put(disciplina, nota);
     }
 
     public void stergeNota(String disciplina) {
         note.remove(disciplina);
+    }
+
+    @Override
+    public String toString() {
+        var message = new StringBuilder();
+        message.append(nume);
+        message.append(System.lineSeparator());
+        for (Map.Entry<String, Integer> nota : note.entrySet()) {
+            message.append("   " + nota.getKey() + ":" + nota.getValue());
+            message.append(System.lineSeparator());
+        }
+        return message.toString();
     }
 
     @Override
@@ -54,20 +67,20 @@ class Student implements Comparable, Cloneable {
             Student copie = (Student)super.clone();
             copie.note = new HashMap<>(this.note);
             return copie;
-        } catch (CloneNotSupportedException e) {
+        }
+        catch (CloneNotSupportedException e) {
             throw new AssertionError("Clone nu e suportat.", e);
         }
     }
 }
 
-
-
 public class Program03_Studenti {
     public static void afiseazaCatalog(List<Student> studenti, String disciplina) {
         var studentiSortati = new ArrayList<>(studenti);
         Collections.sort(studentiSortati);
+
         System.out.println();
-        System.out.println("Catalog" + disciplina);
+        System.out.println("Catalog " + disciplina);
         System.out.println();
 
         for (var student : studentiSortati) {
@@ -79,20 +92,20 @@ public class Program03_Studenti {
             }
             System.out.println();
         }
-        System.out.println("=============");
+        System.out.println("============");
     }
 
     public static void main(String[] args) {
         Student ion = new Student("Ion");
-        ion.adaugaNote("Java", 6);
-        ion.adaugaNote("PAW", 9);
+        ion.adaugaNota("Java", 6);
+        ion.adaugaNota("PAW", 9);
         System.out.println(ion);
 
-        ion.adaugaNote(new String("Java"), 10);
+        ion.adaugaNota(new String("Java"), 10);
         System.out.println(ion);
 
         ion.stergeNota("PAW");
-        ion.adaugaNote("SGBD", 8);
+        ion.adaugaNota("SGBD", 8);
         System.out.println(ion);
 
         for (String disciplina : ion.getDiscipline()) {
@@ -100,18 +113,22 @@ public class Program03_Studenti {
         }
 
         Student maria = new Student("Maria");
-        maria.adaugaNote("Java", 9);
-        maria.adaugaNote("PAW", 10);
+        maria.adaugaNota("Java", 9);
+        maria.adaugaNota("PAW", 10);
+
+
+
 
         Student vasile = new Student("Vasile");
+
         List<Student> studenti = new ArrayList<>();
         studenti.add(maria);
         Collections.addAll(studenti, vasile, ion);
         afiseazaCatalog(studenti, "Java");
 
         var clonaIon = ion.clone();
-        clonaIon.adaugaNote("Java", 8);
-        clonaIon.adaugaNote("Test", 10);
+        clonaIon.adaugaNota("Java", 8);
+        clonaIon.adaugaNota("Test", 10);
         System.out.println(ion);
         System.out.println(clonaIon);
     }
