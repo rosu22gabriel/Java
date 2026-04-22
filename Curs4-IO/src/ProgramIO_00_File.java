@@ -19,6 +19,7 @@ public class ProgramIO_00_File {
     }
 
     public static void main(String[] args) throws IOException {
+
         // 1. Afisare recursiva director
         var rootFolder = new File(".");
         showFolders(rootFolder, 0);
@@ -26,6 +27,7 @@ public class ProgramIO_00_File {
         // 2. Manipulare directoare si fisiere
         var testFolder = new File(".\\Teste");
         if (testFolder.exists()) {
+
             for (var fisier : testFolder.listFiles()) {
                 fisier.delete();
             }

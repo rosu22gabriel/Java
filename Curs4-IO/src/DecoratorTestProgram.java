@@ -8,7 +8,8 @@ interface Generator {
     int next();
 }
 
-/** Concrete Components**/
+/** Concrete Components **/
+
 class SequentialGenerator implements Generator {
     private int current;
 
@@ -36,7 +37,7 @@ class RandomGenerator implements Generator {
     }
 }
 
-/** Decorator Abstract Class **/
+/** Decoractor Abstract Class **/
 abstract class Decorator implements Generator {
     Generator generator;
 
@@ -51,9 +52,9 @@ abstract class Decorator implements Generator {
 
 /** Decorator Implementations (concrete classes) **/
 
-// Extrage doar numele pare din generatorul sursa
+// Extrage doar numerele pare din generatorul sursa
 class EvenGenerator extends Decorator {
-    public EvenGenerator(Generator generator) {
+    public EvenGenerator(Generator generator){
         super(generator);
     }
 
@@ -67,7 +68,7 @@ class EvenGenerator extends Decorator {
     }
 }
 
-// Dubleaza valoare extrasa din generatorul sursa
+// Dubleaza valoarea extrasa din generatorul sursa
 class DoubleGenerator extends Decorator {
     public DoubleGenerator(Generator generator) {
         super(generator);
@@ -106,14 +107,14 @@ class LoggingGenerator extends Decorator {
     public String toString() {
         var result = new StringBuilder();
         for (var value : values) {
-            result.append(value + "");
+            result.append(value + " ");
         }
         return result.toString();
     }
 }
 
 // Adauga metoda nextVector(size) pentru a extrage
-// un vector de intregi din generatorul sursa.
+// un vecotr de intregi din generatorul sursa
 class VectorGenerator extends Decorator {
     public VectorGenerator(Generator generator) {
         super(generator);
@@ -130,6 +131,7 @@ class VectorGenerator extends Decorator {
 
 public class DecoratorTestProgram {
     public static void main(String[] args) {
+
         // Exemplul 1: Utilizare generatori simpli
         var serial = new SequentialGenerator(100);
         System.out.printf("Exemplul 1: Generator serial (100): %d %d %d%n",
@@ -144,9 +146,10 @@ public class DecoratorTestProgram {
         System.out.printf("Exemplul 2: Generator aleator numere pare [0, 20): %d %d %d%n",
                 even.next(), even.next(), even.next());
 
-        // Exemplul 3: Generator de vectori de numere in secvente, inmultire cu 2
+
+        // Exemplul 3: Generator de vectori de numere in secventa, inmultite cu 2
         var vector = new VectorGenerator(new DoubleGenerator(serial));
-        System.out.printf("Exemplul 3: Vector; %s%n",
+        System.out.printf("Exemplul 3: Vector: %s%n",
                 Arrays.toString(vector.nextVector(10)));
 
         // Exemplul 4: Utilizare complexa generatori (secventa / retinere in log / ...)
@@ -161,8 +164,9 @@ public class DecoratorTestProgram {
             System.out.println(generatorFinal.next());
         }
 
-        System.out.println("Numerele generate de secventa originala: " + sursa);
+        System.out.println("Numerele generate de secventa originala " + sursa);
         System.out.println("Numerele finale (utilizate pentru suma): " + generatorFinal);
         System.out.println("Suma este " + generatorFinal.sum());
     }
+
 }
